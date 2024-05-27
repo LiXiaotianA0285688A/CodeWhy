@@ -29,6 +29,13 @@ public class MaterialController {
         return materialService.getMaterials(requestToMaterial(request));
     }
 
+    @GetMapping("/material/getbytopic/{topic_id}")
+    public List<Material> getMaterialsByTopic(@PathVariable String topic_id){
+        Material material = new Material();
+        material.setTopic_id(new ObjectId(topic_id));
+        return materialService.getMaterials(material);
+    }
+
     @PostMapping("/material/create")
     public Material createMaterial(@RequestBody Map<String, Object> request){
         return materialService.createMaterial(requestToMaterial(request));

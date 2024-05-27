@@ -8,8 +8,10 @@ import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 @RestController
 public class QuestionController {
@@ -25,6 +27,39 @@ public class QuestionController {
     @PostMapping("/question/getfil")
     public List<Question> getQuestionsByFilters(@RequestBody Map<String, Object> request){
         return questionService.getQuestions(requestToQuestion(request));
+    }
+
+    @GetMapping("/question/preexercise")
+    public List<Question> getPreExercise(){
+        Question question = new Question();
+        question.setLevel("pre_exercise");
+        return questionService.getQuestions(question);
+    }
+
+    @GetMapping("/question/exercise/{material_id}")
+    public List<Question> getExercise(@PathVariable String material_id){
+        Question question = new Question();
+        question.setLevel("exercise");
+        question.setMaterial_id(new ObjectId(material_id));
+        return questionService.getQuestions(question);
+    }
+
+    @GetMapping("/question/quiz")
+    public List<Question> getQuiz(){
+        Question question = new Question();
+        question.setLevel("quiz");
+        List<Question> qList = questionService.getQuestions(question);
+        List<Question> result = new ArrayList<Question>();
+
+        Random rand = new Random();
+
+        for (int k = 0; k < 10; k++) {
+            int i = rand.nextInt(qList.size());
+            result.add(qList.get(i));
+            qList.remove(i);
+        }
+
+        return result;
     }
 
     @PostMapping("/question/create")
