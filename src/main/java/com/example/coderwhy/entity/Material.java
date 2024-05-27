@@ -1,6 +1,7 @@
 package com.example.coderwhy.entity;
 
 import lombok.Data;
+import org.bson.types.Binary;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -16,6 +17,6 @@ public class Material {
     private ObjectId topic_id;
     private String type;
     private String name;
-    private String file;
+    private Binary file;
     private Date update_date;
 }

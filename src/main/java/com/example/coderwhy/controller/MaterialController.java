@@ -4,6 +4,7 @@ import com.example.coderwhy.entity.Material;
 import com.example.coderwhy.service.MaterialService;
 import com.mongodb.client.result.DeleteResult;
 import com.mongodb.client.result.UpdateResult;
+import org.bson.types.Binary;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -55,7 +56,7 @@ public class MaterialController {
         if (request.get("type") != null)
             material.setType((String) request.get("type"));
         if (request.get("file") != null)
-            material.setFile((String) request.get("file"));
+            material.setFile((Binary) request.get("file"));
         if (request.get("update_date") != null)
             material.setUpdate_date((Date) request.get("update_date"));
         return material;

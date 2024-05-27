@@ -57,6 +57,8 @@ public class QuestionController {
             question.setType((String) request.get("type"));
         if (request.get("answer") != null)
             question.setAnswer((String) request.get("answer"));
+        if (request.get("explanation") != null)
+            question.setExplanation((String) request.get("explanation"));
         if (request.get("is_verified") != null)
             question.setIs_verified((Boolean) request.get("is_verified"));
         return question;

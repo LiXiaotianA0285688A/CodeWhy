@@ -16,5 +16,6 @@ public class Question {
     private String level;
     private String type;
     private String answer;
+    private String explanation;
     private Boolean is_verified;
 }

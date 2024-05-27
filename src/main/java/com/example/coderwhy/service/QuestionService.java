@@ -48,7 +48,7 @@ public class QuestionService {
 
     public Question createQuestion(Question question) {
         question.set_id(null);
-        Query qName = new Query(Criteria.where("title").is(question.getTitle()));
+        Query qName = new Query(Criteria.where("title").is(question.getTitle()).and("material_id").is(question.getMaterial_id()));
         List<Question> questionCheck = mongoTemplate.find(qName, Question.class);
         if (questionCheck.size() > 0){
             throw new IllegalStateException("Question has already existed");
@@ -76,6 +76,7 @@ public class QuestionService {
         update.set("type",question.getType());
         update.set("level",question.getLevel());
         update.set("answer",question.getAnswer());
+        update.set("explanation",question.getExplanation());
         update.set("is_verified",question.getIs_verified());
 
         UpdateResult upsert = mongoTemplate.upsert(query, update, Question.class);
