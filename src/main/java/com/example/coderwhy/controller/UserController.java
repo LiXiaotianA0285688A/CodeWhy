@@ -16,10 +16,6 @@ public class UserController {
 
     @Autowired
     private UserService userService;
-    @GetMapping("/index")
-    public String index() {
-        return "TEST";
-    }
 
     @GetMapping("/user/getall")
     public List<User> getUserList(){
