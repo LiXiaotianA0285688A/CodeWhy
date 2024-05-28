@@ -44,7 +44,7 @@ public class QuestionController {
         return questionService.getQuestions(question);
     }
 
-    @GetMapping("/question/quiz")
+    /*@GetMapping("/question/quiz")
     public List<Question> getQuiz(){
         Question question = new Question();
         question.setLevel("quiz");
@@ -60,6 +60,14 @@ public class QuestionController {
         }
 
         return result;
+    }*/
+
+    @GetMapping("/question/quiz/{material_id}")
+    public List<Question> getQuiz(@PathVariable String material_id){
+        Question question = new Question();
+        question.setLevel("quiz");
+        question.setMaterial_id(new ObjectId(material_id));
+        return questionService.getQuestions(question);
     }
 
     @PostMapping("/question/create")
