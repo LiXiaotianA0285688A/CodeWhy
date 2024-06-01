@@ -45,7 +45,7 @@ class CoderWhyApplicationTests {
         fis.read(buffer);
         Binary b = new Binary(buffer);*/
 
-        String fileName = "D:/Nornir/study materials/CoderWhyRelated/quiz6.txt";
+        /*String fileName = "D:/Nornir/study materials/CoderWhyRelated/quiz6.txt";
         String s = Files.readString(Paths.get(fileName));
         String[] sp1 = s.split("Question:");
         for (String sp1c : sp1) {
@@ -69,7 +69,7 @@ class CoderWhyApplicationTests {
             question.setIs_verified(true);
             Question q1 = questionService.createQuestion(question);
             System.out.println(q1);
-        }
+        }*/
 
 
 
